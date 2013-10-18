@@ -4,8 +4,6 @@ namespace Application\Model;
 
 use Zend\InputFilter\Factory as InputFactory;
 use Zend\InputFilter\InputFilter;
-use Zend\InputFilter\InputFilterAwareInterface;
-use Zend\InputFilter\InputFilterInterface;
 use Core\Model\Entity;
 
 /*
@@ -119,11 +117,14 @@ class Comment extends Entity
                     array('name' => 'StripTags'),
                     array('name' => 'StringTrim'),
                 ),
-//                'validators' => array(
-//                    array(
-//                        'name' => 'Date',
-//                    )
-//                )
+                'validators' => array(
+                    array(
+                        'name' => 'Date',
+                        'options' => array(
+                            'format' => 'Y-m-d H:i:s'
+                        )
+                    )
+                )
             )));
             
             

@@ -5,7 +5,6 @@ namespace Application\Model;
 use Core\Test\TestCase;
 use Application\Model\Comment;
 use Application\Model\Post;
-use Zend\InputFilter\InputFilterInterface;
 
 class CommentTest extends TestCase
 {
@@ -62,7 +61,6 @@ class CommentTest extends TestCase
 
         $saved = $this->getTable('Application\Model\Comment')->save($comment);
 
-        //testa o filtro de tags e espaços
         $this->assertEquals('Teste de cadastro', $saved->description);
         //testa o auto increment da chave primária
         $this->assertEquals(1, $saved->id);
@@ -77,10 +75,10 @@ class CommentTest extends TestCase
         $post->description = 'Teste<br> ';
         $post->post_date = date('Y-m-d H:i:s');
         
-        $post = $this->getTable('Application\Model\Post')->save($post);
-        $post = $post->getData();
+        $table = $this->getTable('Application\Model\Post')->save($post);
+        $tableData = $table->getData();
         
-        return $post;
+        return $tableData;
     }
     
     private function addComment( $postId )
