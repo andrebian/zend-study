@@ -1,0 +1,22 @@
+<a href="/application/index/index">Voltar</a>
+<h2>Detalhes do post #<?php echo $post['id']; ?></h2>
+
+<div class="row">
+    <br clear="all"/>
+    <div class="span1">&nbsp;</div>
+    <div class="span10">
+        <b>Título:</b> <?php echo $post['title']; ?>
+        <br />
+        <b>Conteúdo:</b> <?php echo $post['description']; ?>
+        <br />
+        <b>Data de publicação: </b><?php echo date('d/m/Y H:i:s', strtotime($post['post_date'])); ?>
+        <br clear="all"/>
+        <b>Comentários: </b>
+        <br />
+        <?php foreach($post['comments'] as $comentario) {
+            echo $comentario['description'] . ' - por ' . $comentario['name'] . ' ás ' . 
+                    date('H:i:s', strtotime($comentario['comment_date'])) . ' de ' . 
+                    date('d/m/Y', strtotime($comentario['comment_date'])) . '<br />';
+        } ?>
+    </div>
+</div>
