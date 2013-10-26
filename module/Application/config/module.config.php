@@ -21,6 +21,28 @@ return array(
                     ),
                 ),
             ),
+            'application-posts' => array(
+                'type' => 'Literal',
+                'options' => array(
+                    'route' => '/posts',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Index',
+                        'action' => 'index',
+                        'module' => 'application'
+                    )
+                )
+            ),
+            'application-view' => array(
+                'type' => 'Segment',
+                'options' => array(
+                    'route' => '/post/:id',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Index',
+                        'action' => 'view',
+                        'module' => 'application'
+                    )
+                )
+            ),
             'application' => array(
                 'type'    => 'Literal',
                 'options' => array(
